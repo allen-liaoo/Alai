@@ -28,10 +28,8 @@ class BigramLanguageModel:
 
         return logits, loss, dl_dlogits
 
-    def backward(self, dl_dlogits, *, learning_rate= 1e-3, update_weights= True):
-        _, dl_dw = self.embed.backward(dl_dlogits)
-        if update_weights:
-            self.embed.update_weights(learning_rate= learning_rate, dl_dw= dl_dw)
+    def backward(self, dl_dlogits, *, lr= 1e-3, update= True):
+        self.embed.backward(dl_dlogits, lr=lr, update=update)
 
     # idxs: (N,) - sequence of N tokens
     # max_new_tokens: scalar

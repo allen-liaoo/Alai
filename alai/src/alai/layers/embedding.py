@@ -19,8 +19,8 @@ class Embedding(Linear):
 
     # dl_dy: (B, N, E)
     # dl_dw: (B, V, E) - each batch is a matrix W with a scalar from dl_dy at every index used in the batch, and 0 elsewjere
-    def backward(self, dl_dy):
-        dl_dx, dl_dw, _ = super().backward(dl_dy)
+    def backward(self, dl_dy, *, lr= 1e-3, update= True):
+        dl_dx, dl_dw, _ = super().backward(dl_dy, lr= lr, update= update)
         return dl_dx, dl_dw
 
 # Embed tokens (integers) into real-valued tensors

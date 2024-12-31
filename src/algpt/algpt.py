@@ -1,5 +1,5 @@
 import numpy as np
-from src.models.bigram import BigramLanguageModel
+from alai.models.bigram import BigramLanguageModel
 import os
 import pathlib
 

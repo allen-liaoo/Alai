@@ -4,7 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-lxml = "*"
+numpy = "*"
+alai = {editable = true, path = "./../alai"}
 
 [dev-packages]
 

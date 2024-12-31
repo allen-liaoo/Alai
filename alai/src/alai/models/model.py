@@ -12,8 +12,9 @@ class Model:
         pass
 
     # Backward pass through the network
-    # Updates each layer's weights if update_weights is true
+    # lr: learning rate
+    # update: if True, updates each layer's weights
     # usually returns None
     @abstractmethod
-    def backward(self, *, learning_rate, update_weights):
+    def backward(self, *, lr, update):
         pass
