@@ -3,6 +3,7 @@
 
 import os
 import pathlib
+import re
 from lxml import html as HTMLParser
 
 cwd_path = pathlib.Path(__file__).parent
@@ -26,6 +27,8 @@ for filename in os.listdir(raw_data_path):
         msg_content = e.xpath("./div[contains(@class, 'message_part')]/span")
         if not msg_content or len(msg_content) == 0: continue
         msg = msg_content[0].text_content()
+        if re.findall(r'[\u4e00-\u9fff]', msg): continue # exclude chinese characters
+        # if re.findall(r'[^a-zA-z0-9]', msg): continue # exclude non-english characters
 
         sender = e.xpath("./p/span[contains(@class, 'sender')]/text()")
         if not sender or len(sender) == 0: continue
@@ -33,5 +36,6 @@ for filename in os.listdir(raw_data_path):
 
         msgs.append(f'##{category}\n{msg}\n\n')
 
-    with open(data_path / filename.replace('.html', '.txt'), 'w') as file:
-        file.write(''.join(msgs))
+    if len(msgs) != 0:
+        with open(data_path / filename.replace('.html', '.txt'), 'w') as file:
+            file.write(''.join(msgs))
