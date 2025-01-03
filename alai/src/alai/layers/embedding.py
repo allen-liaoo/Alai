@@ -1,3 +1,4 @@
+# Status: Does not conform to breaking changes in alai API
 import numpy as np
 from .linear import Linear
 

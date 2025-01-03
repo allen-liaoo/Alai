@@ -1,6 +1,7 @@
+# TODO: Conform to breaking changes in alai API. also, nonfunctional prior to changes
 import numpy as np
 from ..layers.embedding import Embedding
-from .. import loss as Loss
+from ..loss import loss as Loss
 from .. import utils as utils
 
 class BigramLanguageModel:
