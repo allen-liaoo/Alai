@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 numpy = "*"
 alai = {editable = true, path = "./../alai"}
+tqdm = "*"
 
 [dev-packages]
 
