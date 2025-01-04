@@ -33,7 +33,7 @@ model = models.Sequential([
     layers.activation.Sigmoid(),
     layers.Linear(10, 1),
     layers.activation.Sigmoid()
-], lossFn= los.MeanSquaredError())
+], lossFn= los.BinaryCrossEntropy()) #.MeanSquaredError())
 # model = XOR()
 epoches = 100
 print(model)
