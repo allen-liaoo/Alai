@@ -67,10 +67,10 @@ class Loss(ABC):
             return decorator(func)
 
 class MeanSquaredError(Loss):
-    @Loss.fwd_reduce
+    @Loss.reducer(default= 'mean', axis= None)
     def forward(self, output, targets):
         return np.mean((output - targets) ** 2, axis= None)
 
-    @Loss.bwd_reduce
+    @Loss.reducer(default= 'mean', axis= None)
     def backward(self, output, targets):
         return 2 * (output - targets)
